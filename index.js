@@ -63,15 +63,15 @@ class Connection extends BetterEvents {
 
   /**
    * Writes a message to the socket. Returns true if the message was written to the socket.
-   * @param {*} obj - The object to transmit.
+   * @param {*} data - The object to transmit.
    * @returns {boolean}
    */
-  send(obj) {
+  send(data) {
     if (this.isDead) {
       return false
     }
 
-    this.socket.write(JSON.stringify(obj) + '\n')
+    this.socket.write(JSON.stringify(data) + '\n')
     return true
   }
 
