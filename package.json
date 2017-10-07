@@ -4,7 +4,7 @@
   "description": "Easy and secure password hashing with salt.",
   "main": "index.js",
   "scripts": {
-    "test": "rm -rf coverage && nyc mocha",
+    "test": "rm -f test-socket && rm -rf coverage && nyc mocha",
     "lint": "node_modules/eslint/bin/eslint.js ."
   },
   "engines": {
@@ -42,5 +42,8 @@
     "eslint-config-ultra": "^0.4.5",
     "mocha": "^4.0.0",
     "nyc": "^11.2.1"
+  },
+  "dependencies": {
+    "better-events": "^3.0.5"
   }
 }

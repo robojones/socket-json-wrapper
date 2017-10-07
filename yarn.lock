@@ -216,6 +216,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+better-events@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/better-events/-/better-events-3.0.5.tgz#2fdb1f9b4f60f7b383c373552a88f2fc986b6a48"
+
 boom@2.x.x:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"

@@ -1,8 +1,54 @@
 const assert = require('assert')
+const net = require('net')
+const { once } = require('better-events')
 
 describe('job-server', function () {
-  const {
-    Server,
-    Client
-  } = require('..')
+  const { Connection } = require('..')
+
+  beforeEach(async function () {
+    this._server = net.createServer(socket => {
+      this.server = new Connection(socket)
+    }).listen('test-socket')
+
+    await once(this._server, 'listening')
+
+    this._client = net.createConnection('test-socket')
+    this.client = new Connection(this._client)
+
+    // wait for connection
+    const queue = [once(this._server, 'connection'), once(this._client, 'connect')]
+    await Promise.all(queue)
+  })
+
+  afterEach(async function () {
+    if (!this.client.isDead) {
+      this._client.end()
+    }
+
+    this._server.close()
+
+    await once(this._server, 'close')
+  })
+
+  it('should transfer objects', async function () {
+    const exampleObject = { hello: 'world' }
+    this.client.send(exampleObject)
+
+    const result = await once(this.server, 'message')
+
+    assert.deepEqual(result, exampleObject)
+  })
+
+  it('should emit an error if invalid json is transfered', function (cb) {
+    this.server.once('error', () => cb())
+    this.client.socket.write('asdf\n')
+  })
+
+  describe('.send()', function () {
+    it('should return false if the connection is closed', async function () {
+      this.client.socket.end()
+
+      assert(!this.client.send({}))
+    })
+  })
 })
