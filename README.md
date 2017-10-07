@@ -18,8 +18,11 @@ npm i socket-json-wrapper
 
 ## Usage
 
-`server.js`
+In the `server.js` file:
 ```javascript
+const net = require('net')
+const { Connection } = require('socket-json-wrapper')
+
 const server = net.createServer(socket => {
   const connection = new Connection(socket)
 
@@ -33,8 +36,12 @@ const server = net.createServer(socket => {
 })
 ```
 
-`client.js`
+In the `client.js` file:
+
 ```javascript
+const net = require('net')
+const { Connection } = require('socket-json-wrapper')
+
 const socket = net.createConnection(8080)
 
 const connection = new Connection(socket)
@@ -47,3 +54,25 @@ connection.on('message', data => {
 // send some data to the server.
 connection.send({ dataFromClient: 'baz' })
 ```
+
+## API
+
+### connection.isDead
+
+`<boolean>`
+
+Is set to true if the underlying socket is not writable.
+
+### connection.socket
+
+A refference to the wrapped socket.
+
+### connection.send(data)
+
+- __data__ `<*>` - This may be any value that can by stringified to valid JSON.
+
+It __returns__ a `<boolean>` that is true if the data was written to the socket.
+
+### connection.close()
+
+This method calls `.end()` on the underlying socket.
