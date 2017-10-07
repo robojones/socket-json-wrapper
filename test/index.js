@@ -46,7 +46,7 @@ describe('socket-json-wrapper', function () {
 
   describe('.send()', function () {
     it('should return false if the connection is closed', async function () {
-      this.client.socket.end()
+      this.client.close()
 
       assert(!this.client.send({}))
     })

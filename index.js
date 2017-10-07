@@ -30,12 +30,17 @@ class Connection extends BetterEvents {
     })
   }
 
+  /**
+   * Is true if the underlying socket is not writable.
+   * @returns {boolean}
+   */
   get isDead() {
     return !this.socket.writable
   }
 
   /**
    * Parses this._message and emits the "message" event if one was received.
+   * @returns {void}
    */
   _parse() {
     const i = this._message.indexOf('\n')
@@ -67,6 +72,19 @@ class Connection extends BetterEvents {
     }
 
     this.socket.write(JSON.stringify(obj) + '\n')
+    return true
+  }
+
+  /**
+   * Close the connection.
+   * @returns {void}
+   */
+  close() {
+    if (this.isDead) {
+      return false
+    }
+
+    this.socket.end()
     return true
   }
 }
