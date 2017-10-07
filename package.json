@@ -1,6 +1,6 @@
 {
   "name": "socket-json-wrapper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wrapper for socket connections that allows you to send and receive json objects.",
   "main": "index.js",
   "scripts": {
