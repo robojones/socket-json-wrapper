@@ -1,7 +1,7 @@
 {
-  "name": "job-server",
+  "name": "socket-json-wrapper",
   "version": "0.1.1",
-  "description": "Easy and secure password hashing with salt.",
+  "description": "Wrapper for socket connections that allows you to send and receive json objects.",
   "main": "index.js",
   "scripts": {
     "test": "rm -f test-socket && rm -rf coverage && nyc mocha",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/robojones/job-server.git"
+    "url": "git+https://github.com/robojones/socket-json-wrapper.git"
   },
   "keywords": [
     "hash",
@@ -24,9 +24,9 @@
   "author": "robojones",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/robojones/job-server/issues"
+    "url": "https://github.com/robojones/socket-json-wrapper/issues"
   },
-  "homepage": "https://github.com/robojones/job-server#readme",
+  "homepage": "https://github.com/robojones/socket-json-wrapper#readme",
   "nyc": {
     "exclude": [
       "test/*"
