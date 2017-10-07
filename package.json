@@ -15,11 +15,11 @@
     "url": "git+https://github.com/robojones/socket-json-wrapper.git"
   },
   "keywords": [
-    "hash",
-    "password",
-    "salt",
-    "sha256",
-    "sha512"
+    "socket",
+    "connection",
+    "json",
+    "net",
+    "tcp"
   ],
   "author": "robojones",
   "license": "MIT",
