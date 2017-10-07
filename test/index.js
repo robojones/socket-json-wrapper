@@ -2,7 +2,7 @@ const assert = require('assert')
 const net = require('net')
 const { once } = require('better-events')
 
-describe('job-server', function () {
+describe('socket-json-wrapper', function () {
   const { Connection } = require('..')
 
   beforeEach(async function () {
