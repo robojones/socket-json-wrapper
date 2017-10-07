@@ -1,0 +1,46 @@
+{
+  "name": "job-server",
+  "version": "0.1.1",
+  "description": "Easy and secure password hashing with salt.",
+  "main": "index.js",
+  "scripts": {
+    "test": "rm -rf coverage && nyc mocha",
+    "lint": "node_modules/eslint/bin/eslint.js ."
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robojones/job-server.git"
+  },
+  "keywords": [
+    "hash",
+    "password",
+    "salt",
+    "sha256",
+    "sha512"
+  ],
+  "author": "robojones",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robojones/job-server/issues"
+  },
+  "homepage": "https://github.com/robojones/job-server#readme",
+  "nyc": {
+    "exclude": [
+      "test/*"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  },
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.5.0",
+    "eslint": "^4.7.1",
+    "eslint-config-ultra": "^0.4.5",
+    "mocha": "^4.0.0",
+    "nyc": "^11.2.1"
+  }
+}
