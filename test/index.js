@@ -45,10 +45,17 @@ describe('socket-json-wrapper', function () {
   })
 
   describe('.send()', function () {
-    it('should return false if the connection is closed', async function () {
+    it('should return false if the connection is closed', function () {
       this.client.close()
 
       assert(!this.client.send({}))
+    })
+  })
+
+  describe('.close()', function () {
+    it('should return true when called for the first time.', function () {
+      assert(this.client.close())
+      assert(!this.client.close())
     })
   })
 })
