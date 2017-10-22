@@ -7,6 +7,7 @@
     "test": "rm -f test-socket && rm -rf coverage && nyc mocha",
     "lint": "node_modules/eslint/bin/eslint.js ."
   },
+  "pre-push": ["lint", "test"],
   "engines": {
     "node": ">=8.0.0"
   },
@@ -41,7 +42,8 @@
     "eslint": "^4.7.1",
     "eslint-config-ultra": "^0.4.5",
     "mocha": "^4.0.0",
-    "nyc": "^11.2.1"
+    "nyc": "^11.2.1",
+    "pre-push": "^0.1.1"
   },
   "dependencies": {
     "better-events": "^3.0.5"
