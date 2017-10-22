@@ -43,23 +43,23 @@ class Connection extends BetterEvents {
    * @returns {void}
    */
   _parse() {
-    const i = this._message.indexOf('\n')
-    if (i === -1) {
-      return
+    while (true) {
+      const i = this._message.indexOf('\n')
+      if (i === -1) {
+        break
+      }
+
+      const msg = this._message.substr(0, i)
+      this._message = this._message.substr(i + 1)
+
+      try {
+        const obj = JSON.parse(msg)
+        this.emit('message', obj)
+      } catch (error) {
+        error.text = msg
+        this.emit('error', error)
+      }
     }
-
-    const msg = this._message.substr(0, i)
-    this._message = this._message.substr(i + 1)
-
-    try {
-      const obj = JSON.parse(msg)
-      this.emit('message', obj)
-    } catch (error) {
-      error.text = msg
-      this.emit('error', error)
-    }
-
-    this._parse()
   }
 
   /**
