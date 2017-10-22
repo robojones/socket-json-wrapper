@@ -40,8 +40,12 @@ describe('socket-json-wrapper', function () {
   })
 
   it('should emit an error if invalid json is transfered', function (cb) {
-    this.server.once('error', () => cb())
-    this.client.socket.write('asdf\n')
+    const msg = 'asdf\n'
+    this.server.once('error', err => {
+      assert.strictEqual(err.text, msg.trim())
+      cb()
+    })
+    this.client.socket.write(msg)
   })
 
   describe('.send()', function () {

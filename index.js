@@ -55,6 +55,7 @@ class Connection extends BetterEvents {
       const obj = JSON.parse(msg)
       this.emit('message', obj)
     } catch (error) {
+      error.text = msg
       this.emit('error', error)
     }
 
