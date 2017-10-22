@@ -1,13 +1,16 @@
 {
   "name": "socket-json-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapper for socket connections that allows you to send and receive json objects.",
   "main": "index.js",
   "scripts": {
     "test": "rm -f test-socket && rm -rf coverage && nyc mocha",
     "lint": "node_modules/eslint/bin/eslint.js ."
   },
-  "pre-push": ["lint", "test"],
+  "pre-push": [
+    "lint",
+    "test"
+  ],
   "engines": {
     "node": ">=8.0.0"
   },
