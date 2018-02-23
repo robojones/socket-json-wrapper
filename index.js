@@ -1,11 +1,11 @@
-const { BetterEvents } = require('better-events')
+const { EventEmitter } = require('events')
 const { StringDecoder } = require('string_decoder')
 
 /**
  * Class representing a connection to the daemon.
  * @class
  */
-class Connection extends BetterEvents {
+class Connection extends EventEmitter {
   /**
    * Create a new connection to the daemon.
    * @param {*} socket 

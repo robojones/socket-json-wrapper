@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Wrapper for socket connections that allows you to send and receive json objects.",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "rm -f test-socket && rm -rf coverage && nyc mocha",
     "lint": "node_modules/eslint/bin/eslint.js ."
@@ -49,6 +50,6 @@
     "pre-push": "^0.1.1"
   },
   "dependencies": {
-    "better-events": "^3.0.5"
+    "@types/node": "^9.4.6"
   }
 }
