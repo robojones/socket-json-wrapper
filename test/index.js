@@ -1,6 +1,6 @@
 const assert = require('assert')
 const net = require('net')
-const { once } = require('better-events')
+const once = require('once-promise').default
 
 describe('socket-json-wrapper', function () {
   const { Connection } = require('..')
