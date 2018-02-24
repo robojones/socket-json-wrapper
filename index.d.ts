@@ -1,6 +1,6 @@
 /// <reference types="node" />
-import EventEmitter from 'events'
-import StringDecoder from 'string_decoder'
+import { EventEmitter } from 'events'
+import { StringDecoder } from 'string_decoder'
 import * as net from 'net'
 
 interface Connection {
