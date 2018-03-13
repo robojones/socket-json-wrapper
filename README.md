@@ -76,3 +76,36 @@ It __returns__ a `<boolean>` that is true if the data was written to the socket.
 ### connection.close()
 
 This method calls `.end()` on the underlying socket.
+
+## Typescript usage
+
+In typescript you can define types that can be sent or received.
+You can do so by creating an interface and by passing it to the Connection when you are creating it.
+
+```typescript
+import { createConnection } from 'net'
+import { Connection } from 'socket-json-wrapper'
+
+const socket = createConnection(8080)
+
+interface Sendable {
+  dataFromClient: string
+}
+
+interface Receivable {
+  dataFromServer: string
+}
+
+// Pass interfaces that represent the messages that can be sent or received so you can get completions.
+const connection = new Connection<Sendable, Receivable>(socket)
+
+connection.on('message', data => {
+  // Typescript will automatically know that the data parameter has a dataFromServer property.
+  console.log('received:', data)
+  // will log { dataFromServer: 'foo' }
+})
+
+// send some data to the server.
+connection.send({ dataFromClient: 'baz' })
+// Typescript will automatically detect if your message does not match the sendable type defined in the interface above.
+```

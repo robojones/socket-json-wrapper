@@ -3,15 +3,16 @@ import { EventEmitter } from 'events'
 import { StringDecoder } from 'string_decoder'
 import * as net from 'net'
 
-interface Connection {
-  on(event: 'message', listener: (data: any) => void): this;
-  emit(event: 'message', data: any): boolean;
+export interface Connection<Sendable = any, Receivable = any> {
+  on(event: 'message', listener: (data: Receivable) => void): this;
+  once(event: 'message', listener: (data: Receivable) => void): this;
+  emit(event: 'message', data: Receivable): boolean;
 }
 
 /**
  * Class representing a connection to the daemon.
  */
-export declare class Connection extends EventEmitter {
+export declare class Connection<Sendable = any, Receivable = any> extends EventEmitter {
   /**
    * Create a new connection to the daemon.
    */
@@ -31,7 +32,7 @@ export declare class Connection extends EventEmitter {
    * Writes a message to the socket. Returns true if the message was written to the socket.
    * @param data - The object to transmit.
    */
-  send(data: any): boolean;
+  send(data: Sendable): boolean;
 
   /**
    * Close the connection.
