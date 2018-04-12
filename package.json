@@ -5,8 +5,9 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "test": "rm -f test-socket && rm -rf coverage && nyc mocha",
-    "lint": "node_modules/eslint/bin/eslint.js ."
+    "test": "rm -f test-socket && nyc mocha",
+    "lint": "node_modules/eslint/bin/eslint.js .",
+    "report-coverage": "# codeclimate-test-reporter < coverage/lcov.info"
   },
   "pre-push": [
     "lint",
